@@ -8,12 +8,12 @@ using Newtonsoft.Json.Linq;
 
 public class MistralChatBot : MonoBehaviour
 {
-    private string apiKey = "LXNiqmkTYG1bLjemOzAxUD6NENWKjsdZ"; // Вставь сюда новый API-ключ!
-    private string apiUrl = "https://api.mistral.ai/v1/chat/completions"; // Проверенный URL API
+    private string apiKey = "LXNiqmkTYG1bLjemOzAxUD6NENWKjsdZ"; 
+    private string apiUrl = "https://api.mistral.ai/v1/chat/completions";
     public TMP_Text responseText;
     public void SendMessageToMistral(string userMessage)
     {
-        // Kısa ve öz yanıt vermesi için talimat ekliyoruz
+       
         string prompt = "Lütfen aşağıdaki soruya sadece 1 çok kısa yanıt ver:\n" + userMessage;
 
         StartCoroutine(GetChatResponse(prompt));
@@ -49,7 +49,7 @@ public class MistralChatBot : MonoBehaviour
             {
                 string response = request.downloadHandler.text;
 
-                // JSON'dan sadece AI'nın yanıtını alıyoruz
+               
                 string assistantMessage = ExtractMessageFromJson(response);
                 responseText.text = assistantMessage;
             }
@@ -70,12 +70,13 @@ public class MistralChatBot : MonoBehaviour
     }
     private string EnsureEndingPeriod(string response)
     {
-        response = response.Trim(); // Gereksiz boşlukları temizle
+        response = response.Trim(); 
         if (response.EndsWith("."))
         {
-            response += "."; // Eğer nokta yoksa ekle
+            response += "."; 
         }
         return response;
     }
 
 }
+
